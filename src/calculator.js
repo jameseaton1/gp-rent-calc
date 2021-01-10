@@ -13,7 +13,8 @@ function calculate(monthlyRent, year) {
       });
 
     data.reverse().forEach(function (year, index) {
-        year.rentInflationTotal = yearlyRent * (1 + year.wageInflationRate)
+        yearlyRent *= (1 + year.wageInflationRate);
+        year.rentInflationTotal = yearlyRent;
       });
 
     console.log(data);
