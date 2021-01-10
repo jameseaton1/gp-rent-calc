@@ -1,0 +1,30 @@
+{
+  "name": "gp-rent-calc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jameseaton1/gp-rent-calc.git"
+  },
+  "author": "James Eaton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jameseaton1/gp-rent-calc/issues"
+  },
+  "homepage": "https://github.com/jameseaton1/gp-rent-calc#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "npm": "^6.14.11"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "12.6.1"
+  }
+}
