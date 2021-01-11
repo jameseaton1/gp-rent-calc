@@ -17,6 +17,7 @@ function calculate(monthlyRent, year) {
     data.reverse().forEach(function (year, index) {
         yearlyRent *= (1 + (year.rentInflationRate/100));
         year.inflationTotalByWage = yearlyRent;
+        // if it's in the years we want add it to the total
         if (year.year >= year) {
           totalSaving +=  year.inflationTotalByRent - year.inflationTotalByWage;
         }
