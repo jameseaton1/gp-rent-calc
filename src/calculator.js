@@ -1,7 +1,6 @@
 
-function calculate(monthlyRent, year) {
+function calculate(monthlyRent, startYear) {
 
-    let years = []
     var yearlyRent = monthlyRent * 12;
     var data = getData();
     var totalSaving = 0;
@@ -13,19 +12,21 @@ function calculate(monthlyRent, year) {
         year.inflationTotalByRent = yearlyRent;        
       });
 
-    // ring the inflation if it related to wage increase
+    // find the inflation related to wage increase
     data.reverse().forEach(function (year, index) {
         yearlyRent *= (1 + (year.rentInflationRate/100));
         year.inflationTotalByWage = yearlyRent;
         // if it's in the years we want add it to the total
-        if (year.year >= year) {
+        if (year.year >= startYear) {
+          console.log('Year' + year.year);
           totalSaving +=  year.inflationTotalByRent - year.inflationTotalByWage;
         }
       });
 
     
-    output = {monthlyRent, year, totalSaving};
+    output = {monthlyRent, startYear, totalSaving};
 
+    console.log(totalSaving);
     return output;
 
 

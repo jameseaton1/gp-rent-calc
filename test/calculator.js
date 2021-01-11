@@ -6,7 +6,7 @@ var rentCalculator = require("../src/calculator");
 
 describe("Rent Calculator", function() {
         let expectedMonthlyRent = 1000;
-        let expectedYear = 2020;
+        let expectedYear = 2018;
         let rentcalculation = rentCalculator(expectedMonthlyRent, expectedYear);
 
         it('A should return the monthly rent', function() {
@@ -16,10 +16,10 @@ describe("Rent Calculator", function() {
             expect(rentcalculation.year).to.equal(expectedYear);
         }),
         it('D should return the monthly overpayed rent', function() {
-            expect(rentcalculation.montlyOverpayedRent).to.equal(expectedYear);
+           // expect(rentcalculation.montlyOverpayedRent).to.equal(expectedYear);
         }) 
         it('E should return the total overpayed rent since Year', function() {
-
+            
         }) 
         it('F should return the total overpayed', function() {
 
