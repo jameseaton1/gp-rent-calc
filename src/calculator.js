@@ -37,7 +37,7 @@ function calculate(monthlyRent, startYear) {
     output = {"monthlyRent" : Math.round(monthlyRent), 
               startYear, 
               "totalOverpayment" : Math.round(totalOverpayment), 
-              "correctedMonthlyRent" : data[data.length -1].wageMonthlyRent,
+              "correctedMonthlyRent" : Math.round(data[data.length -1].wageMonthlyRent),
               "montlhyOverpayedRent" : Math.round(data[data.length -1].realMonthlyRent - data[data.length -1].wageMonthlyRent),
               "totalOverpaymentForEveryoneByYear" : Math.round(totalOverpaymentForEveryone),
               "totalOverpaymentForEveryone" : "23,792,513,569"};
