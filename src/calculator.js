@@ -29,8 +29,6 @@ function calculate(monthlyRent, startYear) {
           if (year.year >= startYear) {
             totalOverpayment +=  (year.realMonthlyRent * 12) - (year.wageMonthlyRent * 12);
             totalOverpaymentForEveryone += year.overpaymentForEveryone;
-            console.log("overpaymentForEveryone" + year.overpaymentForEveryone);
-            console.log("totalOverpaymentForEveryone" + totalOverpaymentForEveryone);
           }
         }
       });
