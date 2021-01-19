@@ -1,7 +1,8 @@
 
 function calculate(monthlyRent, startYear) {
+    console.log('-------INPUT-------');
+    console.log(arguments);
 
-    var yearlyRent = monthlyRent * 12;
     var data = getData();
     var totalSaving = 0;
 
@@ -9,38 +10,44 @@ function calculate(monthlyRent, startYear) {
     data.forEach(function (year, index) {
         // No inflated values for 2020
         if (year.year === 2020) {
-          year.realMonthlyRent = monthlyRent;
+          year.realMonthlyRent = monthlyRent * 100;
         } else {
-          year.realMonthlyRent = data[index -1].realMonthlyRent / (1 + (data[index - 1].realInflationRate / 100));
+          year.realMonthlyRent =  Math.round( data[index -1].realMonthlyRent / (1 + ( (data[index - 1].realInflationRate / 100) )));
         }
-        year.inflationTotalByRent = yearlyRent;        
       });
 
 
     var totalOverpayment = 0;
     var totalOverpaymentForEveryone = 0;
+
+
+
     // find the inflation related to wage increase
     data.reverse().forEach(function (year, index) {
       if (year.year === 2011)  {
-        year.wageMonthlyRent = year.realMonthlyRent;  //reset to a base value
+        year.wageMonthlyRent = year.realMonthlyRent;
       } else {
-        year.wageMonthlyRent = data[index-1].wageMonthlyRent * (1 + (year.wageInflationRate/100));
+        year.wageMonthlyRent = Math.round(data[index - 1].wageMonthlyRent * (1 + (year.wageInflationRate / 100)));
           // if it's in the years we want add it to the total
           if (year.year >= startYear) {
-            totalOverpayment +=  (year.realMonthlyRent * 12) - (year.wageMonthlyRent * 12);
+            console.log(year.realMonthlyRent * 12) - (year.wageMonthlyRent * 12);
+            totalOverpayment +=  (Math.round(year.realMonthlyRent * 12 )) - (Math.round(year.wageMonthlyRent  * 12));
             totalOverpaymentForEveryone += year.overpaymentForEveryone;
           }
         }
       });
-
+    console.log('-------CALCULATION-------');
+    console.log(data);
     
     output = {"monthlyRent" : Math.round(monthlyRent), 
               startYear, 
-              "totalOverpayment" : Math.round(totalOverpayment), 
-              "correctedMonthlyRent" : Math.round(data[data.length -1].wageMonthlyRent),
-              "montlhyOverpayedRent" : Math.round(data[data.length -1].realMonthlyRent - data[data.length -1].wageMonthlyRent),
+              "totalOverpayment" : Math.round(totalOverpayment / 100), 
+              "correctedMonthlyRent" : Math.round(data[data.length -1 ].wageMonthlyRent / 100),
+              "montlhyOverpayedRent" : Math.round( (data[data.length -1].realMonthlyRent - data[data.length -1].wageMonthlyRent) / 100),
               "totalOverpaymentForEveryoneByYear" : Math.round(totalOverpaymentForEveryone),
               "totalOverpaymentForEveryone" : "23,792,513,569"};
+    console.log('-------OUPUT-------');
+    console.log(output)
 
     return output;
 

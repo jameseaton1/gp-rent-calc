@@ -22,6 +22,6 @@ describe("Rent Calculator", function() {
             expect(rentcalculation.totalOverpayment).to.equal((185 * 12) + (171 * 12) + (266 *12)); 
         }) 
         it('F should return the total overpayed', function() {
-            expect(rentcalculation.totalOverpaymentForEveryoneByYear).to.equal(( 2933029421+ 2134937493+ 1976024700));
+            expect(rentcalculation.totalOverpaymentForEveryoneByYear).to.equal(( 2933029421 + 2134937493 + 1976024700));
         }) 
   });
