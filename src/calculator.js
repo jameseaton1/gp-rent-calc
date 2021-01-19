@@ -30,7 +30,6 @@ function calculate(monthlyRent, startYear) {
         year.wageMonthlyRent = Math.round(data[index - 1].wageMonthlyRent * (1 + (year.wageInflationRate / 100)));
           // if it's in the years we want add it to the total
           if (year.year >= startYear) {
-            console.log(year.realMonthlyRent * 12) - (year.wageMonthlyRent * 12);
             totalOverpayment +=  (Math.round(year.realMonthlyRent * 12 )) - (Math.round(year.wageMonthlyRent  * 12));
             totalOverpaymentForEveryone += year.overpaymentForEveryone;
           }
